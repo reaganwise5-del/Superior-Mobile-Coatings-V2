@@ -11,9 +11,13 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* PROMO */
 .promo-bar{background:var(--gold);color:#000;text-align:center;padding:.55rem 1rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;position:relative;z-index:300}
 .promo-bar a{color:#000}
-nav{position:sticky;top:0;z-index:200;background:rgba(11,11,13,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.9rem 2.5rem;display:flex;align-items:center;gap:1.5rem}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:rgba(11,11,13,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.9rem 2.5rem;display:flex;align-items:center;gap:1.5rem}
 .nav-logo{height:40px;flex-shrink:0;mix-blend-mode:lighten;filter:brightness(1.1)}
 .nav-pills{display:flex;align-items:center;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:100px;padding:.28rem;gap:.1rem;margin:0 auto}
 .nav-pills button{background:none;border:none;color:rgba(242,240,234,.6);font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.05em;padding:.4rem 1rem;border-radius:100px;cursor:pointer;transition:all .2s;white-space:nowrap}
@@ -21,18 +25,24 @@ nav{position:sticky;top:0;z-index:200;background:rgba(11,11,13,.9);backdrop-filt
 .nav-pills button.active{background:var(--gold);color:#000}
 .nav-cta{background:var(--gold);color:#000;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.06em;padding:.5rem 1.3rem;border-radius:100px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background .2s}
 .nav-cta:hover{background:var(--gold2)}
+
 /* HAMBURGER */
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem;margin-left:auto;flex-shrink:0}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem;margin-left:auto;flex-shrink:0;z-index:210}
 .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
 .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-/* MOBILE DRAWER */
-.mobile-menu{display:none;position:fixed;inset:0;top:60px;background:rgba(11,11,13,.98);backdrop-filter:blur(20px);z-index:199;flex-direction:column;padding:2rem 1.5rem;gap:.5rem;overflow-y:auto}
+
+/* MOBILE DRAWER - fixed below nav+promo, calculated by JS */
+.mobile-menu{display:none;position:fixed;left:0;right:0;bottom:0;background:rgba(11,11,13,.99);backdrop-filter:blur(24px);z-index:199;flex-direction:column;padding:1.5rem;gap:.3rem;overflow-y:auto}
 .mobile-menu.open{display:flex}
-.mobile-menu button{background:none;border:none;color:rgba(242,240,234,.7);font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:500;padding:1rem 0;border-bottom:1px solid var(--border);text-align:left;cursor:pointer;transition:color .2s;width:100%}
-.mobile-menu button:hover,.mobile-menu button.active{color:var(--gold)}
-.mobile-menu .mob-cta{background:var(--gold);color:#000;border:none;border-radius:100px;padding:.9rem;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;margin-top:1rem;text-align:center;text-decoration:none;display:block}
+.mobile-menu button{background:none;border:none;color:rgba(242,240,234,.75);font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:500;padding:1.1rem 0;border-bottom:1px solid var(--border);text-align:left;cursor:pointer;transition:color .2s;width:100%;display:flex;align-items:center;gap:.8rem}
+.mobile-menu button:hover,.mobile-menu button.mob-active{color:var(--gold)}
+.mob-socials{display:flex;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--border)}
+.mob-social-link{color:rgba(242,240,234,.5);font-size:.75rem;letter-spacing:.06em;text-decoration:none;display:flex;align-items:center;gap:.4rem;transition:color .2s}
+.mob-social-link:hover{color:var(--gold)}
+.mob-cta{background:var(--gold);color:#000;border:none;border-radius:100px;padding:.9rem;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;margin-top:.8rem;text-align:center;text-decoration:none;display:block}
+
 .page{display:none}.page.active{display:block}
 
 /* HERO */
@@ -47,15 +57,16 @@ h1.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,6.5vw,6r
 h1.hero-title em{font-style:italic;color:var(--gold);font-weight:400}
 .hero-sub{font-size:.88rem;color:var(--muted);line-height:1.8;max-width:400px;margin-bottom:2rem}
 .hero-btns{display:flex;gap:.9rem;flex-wrap:wrap}
-.btn-primary{background:var(--gold);color:#000;padding:.78rem 1.9rem;border-radius:100px;font-size:.76rem;font-weight:700;letter-spacing:.05em;text-decoration:none;transition:all .2s}
+.btn-primary{background:var(--gold);color:#000;padding:.78rem 1.9rem;border-radius:100px;font-size:.76rem;font-weight:700;letter-spacing:.05em;text-decoration:none;transition:all .2s;display:inline-block}
 .btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
-.btn-outline{border:1px solid rgba(242,240,234,.22);color:var(--white);padding:.78rem 1.9rem;border-radius:100px;font-size:.76rem;font-weight:400;text-decoration:none;transition:all .2s}
+.btn-outline{border:1px solid rgba(242,240,234,.22);color:var(--white);padding:.78rem 1.9rem;border-radius:100px;font-size:.76rem;font-weight:400;text-decoration:none;transition:all .2s;display:inline-block}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
 .hero-stats{display:flex;gap:2.2rem;margin-top:2.2rem;padding-top:2.2rem;border-top:1px solid var(--border)}
 .hstat-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);line-height:1}
 .hstat-lbl{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
-/* quote card */
-.qcard{background:rgba(20,20,26,.92);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;backdrop-filter:blur(20px)}
+
+/* QUOTE CARD */
+.qcard{background:rgba(20,20,26,.94);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;backdrop-filter:blur(20px)}
 .qcard h3{font-size:.95rem;font-weight:600;margin-bottom:.2rem}
 .qcard p{font-size:.7rem;color:var(--muted);margin-bottom:1.3rem}
 .qf-group{margin-bottom:.7rem}
@@ -78,9 +89,9 @@ h1.hero-title em{font-style:italic;color:var(--gold);font-weight:400}
 
 /* PILLARS */
 .pillars{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border)}
-.pillar{padding:2.3rem 1.8rem;border-right:1px solid var(--border);transition:background .3s}
+.pillar{padding:2.3rem 1.8rem;border-right:1px solid var(--border);transition:background .3s,transform .3s}
 .pillar:last-child{border-right:none}
-.pillar:hover{background:var(--dim)}
+.pillar:hover{background:var(--dim);transform:translateY(-3px)}
 .pillar-ico{font-size:1.5rem;margin-bottom:.9rem}
 .pillar-title{font-size:.95rem;font-weight:600;margin-bottom:.45rem}
 .pillar-body{font-size:.76rem;color:var(--muted);line-height:1.75}
@@ -120,25 +131,69 @@ h1.hero-title em{font-style:italic;color:var(--gold);font-weight:400}
 .g-role{font-size:.68rem;color:var(--gold);margin-top:.08rem}
 .g-years{font-size:.68rem;color:var(--muted);margin-top:.08rem}
 
-/* GALLERY */
-.gallery-head{text-align:center;margin-bottom:2.8rem}
-.gallery-head .divider{margin-inline:auto}
-.mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:3px}
-.m-item{overflow:hidden;position:relative;cursor:pointer}
-.m-item.wide{grid-column:span 2}.m-item.tall{grid-row:span 2}
-.m-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s,filter .4s;filter:contrast(1.04) saturate(.88)}
-.m-item:hover img{transform:scale(1.07);filter:contrast(1.08) saturate(1)}
-.m-item::after{content:'';position:absolute;inset:0;background:rgba(201,168,76,0);transition:background .3s;pointer-events:none}
-.m-item:hover::after{background:rgba(201,168,76,.05)}
+/* ═══ PORTFOLIO — CREATIVE SHOWCASE ═══ */
+.portfolio-page{background:var(--bg)}
+
+/* Hero strip */
+.port-hero{position:relative;height:55vh;min-height:340px;overflow:hidden;display:flex;align-items:flex-end}
+.port-hero-bg{position:absolute;inset:0;background:url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/Y4LE1e8aWwFnMvjE/img_6131-A0xwN90y61F5DVgV.JPG') center 40%/cover no-repeat;filter:brightness(.5) saturate(.8)}
+.port-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,13,1) 0%,rgba(11,11,13,.3) 60%,transparent 100%)}
+.port-hero-content{position:relative;z-index:2;padding:3rem 3rem 4rem;width:100%}
+.port-hero-content .label{justify-content:flex-start}
+.port-hero-content h2{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:700;line-height:1}
+.port-hero-content h2 em{font-style:italic;color:var(--gold);font-weight:400}
+
+/* Featured spotlight */
+.port-spotlight{display:grid;grid-template-columns:1.4fr 1fr;gap:3px;background:var(--border)}
+.port-main{position:relative;overflow:hidden;height:520px;cursor:pointer}
+.port-main img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease,filter .5s}
+.port-main:hover img{transform:scale(1.05);filter:brightness(1.1) saturate(1.1)}
+.port-main-label{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(11,11,13,.85);border:1px solid rgba(201,168,76,.3);backdrop-filter:blur(10px);padding:.5rem 1rem;border-radius:100px;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.port-stack{display:flex;flex-direction:column;gap:3px}
+.port-stack-item{position:relative;overflow:hidden;flex:1;cursor:pointer}
+.port-stack-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .4s}
+.port-stack-item:hover img{transform:scale(1.07);filter:brightness(1.1)}
+.port-stack-item::after{content:'';position:absolute;inset:0;background:rgba(201,168,76,0);transition:background .3s}
+.port-stack-item:hover::after{background:rgba(201,168,76,.06)}
+
+/* Horizontal scroll film strip */
+.port-strip-wrap{overflow:hidden;padding:3px 0;background:var(--bg2);border-top:1px solid var(--border)}
+.port-strip-label{padding:2rem 3rem 1rem;display:flex;align-items:center;justify-content:space-between}
+.port-strip-label p{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.port-strip{display:flex;gap:3px;overflow-x:auto;padding:0 3rem 1.5rem;scrollbar-width:none;cursor:grab}
+.port-strip::-webkit-scrollbar{display:none}
+.port-strip.grabbing{cursor:grabbing}
+.port-strip-item{flex-shrink:0;width:300px;height:220px;overflow:hidden;position:relative}
+.port-strip-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s,filter .4s;filter:saturate(.85)}
+.port-strip-item:hover img{transform:scale(1.06);filter:saturate(1) brightness(1.05)}
+
+/* Tall editorial grid */
+.port-editorial{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:380px 380px;gap:3px;background:var(--border)}
+.port-ed-item{overflow:hidden;position:relative;cursor:pointer}
+.port-ed-item.tall{grid-row:span 2}
+.port-ed-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease,filter .5s}
+.port-ed-item:hover img{transform:scale(1.06);filter:brightness(1.08) saturate(1.05)}
+.port-ed-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,13,.7) 0%,transparent 50%);opacity:0;transition:opacity .4s}
+.port-ed-item:hover .port-ed-overlay{opacity:1}
+.port-ed-tag{position:absolute;bottom:1.2rem;left:1.2rem;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);opacity:0;transition:opacity .4s,transform .4s;transform:translateY(6px)}
+.port-ed-item:hover .port-ed-tag{opacity:1;transform:none}
+
+/* Social follow strip */
+.social-follow{background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.social-follow p{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.social-links-row{display:flex;gap:1rem;flex-wrap:wrap}
+.social-link{display:flex;align-items:center;gap:.6rem;padding:.6rem 1.3rem;border:1px solid var(--border);border-radius:100px;text-decoration:none;color:rgba(242,240,234,.7);font-size:.75rem;font-weight:500;transition:all .3s}
+.social-link:hover{border-color:var(--gold);color:var(--gold);background:var(--dim)}
+.social-link svg{width:16px;height:16px;fill:currentColor;flex-shrink:0}
 
 /* REVIEWS */
+.rev-card{background:var(--bg2);padding:2.3rem 2rem;transition:background .3s,transform .3s;cursor:pointer;text-decoration:none;display:block;color:inherit}
+.rev-card:hover{background:var(--bg3);transform:translateY(-3px)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
 .reviews-head{text-align:center;margin-bottom:3rem}
 .reviews-head .divider{margin-inline:auto}
 .star-row{font-size:1.3rem;color:var(--gold);letter-spacing:.1em;margin:.45rem 0 .25rem}
 .rating-note{font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
-.rev-card{background:var(--bg2);padding:2.3rem 2rem;transition:background .3s,transform .3s;cursor:pointer;text-decoration:none;display:block;color:inherit}
-.rev-card:hover{background:var(--bg3);transform:translateY(-3px)}
 .rev-stars{color:var(--gold);font-size:.76rem;letter-spacing:.07em;margin-bottom:1rem}
 .rev-text{font-family:'Playfair Display',serif;font-style:italic;font-size:.97rem;line-height:1.7;color:rgba(242,240,234,.8);margin-bottom:1.3rem}
 .rev-open{color:var(--gold);font-size:1.3rem;vertical-align:-4px;margin-right:2px}
@@ -159,6 +214,17 @@ h1.hero-title em{font-style:italic;color:var(--gold);font-weight:400}
 .c-val{font-size:.9rem;font-weight:500}
 .c-val a{color:var(--white);text-decoration:none;transition:color .2s}
 .c-val a:hover{color:var(--gold)}
+
+/* Social cards on contact */
+.contact-socials{margin-top:2.5rem}
+.contact-socials h4{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.contact-social-cards{display:flex;flex-direction:column;gap:.7rem}
+.contact-social-card{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;background:var(--bg3);border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:all .3s}
+.contact-social-card:hover{border-color:rgba(201,168,76,.3);background:var(--dim);transform:translateX(4px)}
+.contact-social-card svg{width:20px;height:20px;fill:var(--gold);flex-shrink:0}
+.contact-social-card span{font-size:.82rem;color:rgba(242,240,234,.8)}
+.contact-social-card small{font-size:.65rem;color:var(--muted);display:block;margin-top:.1rem}
+
 .cf-box{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:2.3rem}
 .cf-box h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:.25rem}
 .cf-box>p{font-size:.76rem;color:var(--muted);margin-bottom:1.6rem}
@@ -189,7 +255,7 @@ h1.hero-title em{font-style:italic;color:var(--gold);font-weight:400}
 .chip{border:1px solid rgba(201,168,76,.2);color:rgba(242,240,234,.65);padding:.32rem .9rem;border-radius:100px;font-size:.66rem;transition:all .2s}
 .chip:hover{background:var(--dim);color:var(--gold)}
 
-/* CTA BAND */
+/* CTA */
 .cta-band{background:var(--gold);padding:4rem 3rem;text-align:center}
 .cta-band .label{color:rgba(0,0,0,.4);justify-content:center}
 .cta-band .label::before{background:rgba(0,0,0,.28)}
@@ -202,25 +268,34 @@ h1.hero-title em{font-style:italic;color:var(--gold);font-weight:400}
 
 /* FOOTER */
 footer{background:#060608;padding:3.5rem 3rem;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3.5rem;border-top:1px solid var(--border)}
-.f-logo{height:40px;margin-bottom:.9rem}
+.f-logo{height:40px;margin-bottom:.9rem;mix-blend-mode:lighten}
 footer p{font-size:.76rem;color:rgba(242,240,234,.33);line-height:1.8}
 footer h5{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
 footer ul{list-style:none}
 footer ul li{margin-bottom:.45rem}
 footer ul a{color:rgba(242,240,234,.35);font-size:.76rem;text-decoration:none;transition:color .2s;cursor:pointer}
 footer ul a:hover{color:var(--gold)}
+.f-socials{display:flex;gap:.7rem;margin-top:1.2rem;flex-wrap:wrap}
+.f-social{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:rgba(242,240,234,.4);text-decoration:none;transition:all .25s}
+.f-social:hover{border-color:var(--gold);color:var(--gold);background:var(--dim)}
+.f-social svg{width:15px;height:15px;fill:currentColor}
 .f-bar{background:#030305;text-align:center;padding:.85rem 3rem;font-size:.6rem;color:rgba(242,240,234,.16);letter-spacing:.07em;border-top:1px solid rgba(255,255,255,.02)}
 
-/* FADE */
-.fade{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+/* FADE / SCROLL ANIMATIONS */
+.fade{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
 .fade.in{opacity:1;transform:none}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.fade-left{opacity:0;transform:translateX(-30px);transition:opacity .8s ease,transform .8s ease}
+.fade-left.in{opacity:1;transform:none}
+.fade-right{opacity:0;transform:translateX(30px);transition:opacity .8s ease,transform .8s ease}
+.fade-right.in{opacity:1;transform:none}
+.fade-scale{opacity:0;transform:scale(.94);transition:opacity .8s ease,transform .8s ease}
+.fade-scale.in{opacity:1;transform:scale(1)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
 /* RESPONSIVE */
 @media(max-width:960px){
   nav{padding:.75rem 1.2rem;gap:.8rem}
-  .nav-pills{display:none}
-  .nav-cta{display:none}
+  .nav-pills,.nav-cta{display:none}
   .hamburger{display:flex}
   .hero-inner{grid-template-columns:1fr;padding:5rem 1.5rem 3rem}
   .qcard{display:none}
@@ -233,20 +308,28 @@ footer ul a:hover{color:var(--gold)}
   .about-grid{grid-template-columns:1fr}
   .about-img-wrap{height:280px}
   .about-body{padding:3rem 1.5rem}
-  .mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
-  .m-item.wide{grid-column:span 1}.m-item.tall{grid-row:span 1}
+  .port-spotlight{grid-template-columns:1fr}
+  .port-main{height:300px}
+  .port-stack{flex-direction:row;height:180px}
+  .port-editorial{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px 220px}
+  .port-ed-item.tall{grid-row:span 1}
+  .port-strip{padding:0 1.5rem 1.5rem}
+  .port-strip-item{width:220px;height:165px}
+  .port-hero-content{padding:2rem 1.5rem 3rem}
+  .social-follow{padding:2rem 1.5rem;flex-direction:column;align-items:flex-start}
   .videos-grid,.blog-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
   footer{grid-template-columns:1fr;gap:2rem;padding:3rem 1.5rem}
   .area-strip,.cta-band{padding:2.5rem 1.5rem}
+  .port-strip-label{padding:1.5rem 1.5rem .8rem}
 }
 </style>
 </head>
 <body>
 
-<div class="promo-bar">☀️ Summer Shine Special — $20 OFF Any Full Detail! &nbsp;Call <a href="tel:4342414892">434-241-4892</a></div>
+<div class="promo-bar" id="promo-bar">☀️ Summer Shine Special — $20 OFF Any Full Detail! &nbsp;Call <a href="tel:4342414892">434-241-4892</a></div>
 
-<nav>
+<nav id="main-nav">
   <img src="https://raw.githubusercontent.com/reaganwise5-del/Superior-Mobile-Coatings-V2/main/logo-transparent.png" alt="Superior Mobile Coatings" class="nav-logo">
   <div class="nav-pills">
     <button class="active" onclick="go('home',this)">Home</button>
@@ -265,18 +348,23 @@ footer ul a:hover{color:var(--gold)}
 
 <!-- MOBILE DRAWER -->
 <div class="mobile-menu" id="mobile-menu">
-  <button onclick="goMob('home')">Home</button>
-  <button onclick="goMob('about')">About Us</button>
-  <button onclick="goMob('services')">Services &amp; Pricing</button>
-  <button onclick="goMob('portfolio')">Portfolio</button>
-  <button onclick="goMob('videos')">Videos</button>
-  <button onclick="goMob('blog')">Blog</button>
-  <button onclick="goMob('contact')">Contact Us</button>
+  <button onclick="goMob('home')">🏠 Home</button>
+  <button onclick="goMob('about')">👤 About Us</button>
+  <button onclick="goMob('services')">🛠️ Services &amp; Pricing</button>
+  <button onclick="goMob('portfolio')">📸 Portfolio</button>
+  <button onclick="goMob('videos')">🎥 Videos</button>
+  <button onclick="goMob('blog')">📝 Blog</button>
+  <button onclick="goMob('contact')">📞 Contact Us</button>
+  <div class="mob-socials">
+    <a href="https://www.facebook.com/smc434" target="_blank" class="mob-social-link">📘 Facebook</a>
+    <a href="https://www.instagram.com/superiormobilecoatings" target="_blank" class="mob-social-link">📷 Instagram</a>
+    <a href="https://www.youtube.com/@SuperiorMobileCoatings434" target="_blank" class="mob-social-link">▶️ YouTube</a>
+  </div>
   <a href="tel:4342414892" class="mob-cta">📞 Call 434-241-4892</a>
 </div>
 
 
-<!-- HOME -->
+<!-- ══ HOME ══ -->
 <div id="page-home" class="page active">
   <section class="hero">
     <div class="hero-bg"></div>
@@ -291,9 +379,9 @@ footer ul a:hover{color:var(--gold)}
           <a href="#" onclick="go('services',document.querySelectorAll('.nav-pills button')[2]);return false" class="btn-outline">View Packages</a>
         </div>
         <div class="hero-stats">
-          <div><div class="hstat-num">5.0</div><div class="hstat-lbl">Star Rating</div></div>
-          <div><div class="hstat-num">18+</div><div class="hstat-lbl">Reviews</div></div>
-          <div><div class="hstat-num">7+</div><div class="hstat-lbl">Yrs Experience</div></div>
+          <div><div class="hstat-num" data-count="5">0</div><div class="hstat-lbl">Star Rating</div></div>
+          <div><div class="hstat-num" data-count="18">0</div><div class="hstat-lbl">Reviews</div></div>
+          <div><div class="hstat-num" data-count="7">0</div><div class="hstat-lbl">Yrs Experience</div></div>
         </div>
       </div>
       <div class="qcard">
@@ -325,7 +413,7 @@ footer ul a:hover{color:var(--gold)}
     <div class="pillar fade"><div class="pillar-ico">🚗</div><div class="pillar-title">We Come to You</div><p class="pillar-body">Fully mobile — we bring our own water and electricity to your home or office.</p></div>
     <div class="pillar fade d1"><div class="pillar-ico">💎</div><div class="pillar-title">Nano Diamond Coatings</div><p class="pillar-body">Advanced nanotechnology shields paint against UV, oxidation &amp; contaminants.</p></div>
     <div class="pillar fade d2"><div class="pillar-ico">🌊</div><div class="pillar-title">Ceramic Coatings</div><p class="pillar-body">Hydrophobic barrier repels water, dirt &amp; grime for a mirror-like finish.</p></div>
-    <div class="pillar fade d3"><div class="pillar-ico">✨</div><div class="pillar-title">Paint Correction</div><p class="pillar-body">We eliminate swirl marks, scratches &amp; imperfections — restoring your paint's brilliance.</p></div>
+    <div class="pillar fade d3"><div class="pillar-ico">✨</div><div class="pillar-title">Paint Correction</div><p class="pillar-body">We eliminate swirl marks, scratches &amp; imperfections — restoring brilliance.</p></div>
   </div>
 
   <section class="section section-alt">
@@ -347,7 +435,7 @@ footer ul a:hover{color:var(--gold)}
       <a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank" class="rev-card fade d2"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Phenomenal job!!! The best mobile detailing in the Lynchburg area. I will not use anyone else to detail my car.</p><div class="rev-name">Newland Isaac</div><div class="rev-when">2 weeks ago</div></a>
     </div>
     <div style="text-align:center;margin-top:2.5rem">
-      <a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank" class="btn-primary" style="display:inline-block">Read All Reviews on Google ↗</a>
+      <a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank" class="btn-primary">Read All Reviews on Google ↗</a>
     </div>
   </section>
 
@@ -368,13 +456,13 @@ footer ul a:hover{color:var(--gold)}
 </div>
 
 
-<!-- ABOUT -->
+<!-- ══ ABOUT ══ -->
 <div id="page-about" class="page">
   <div class="about-grid">
-    <div class="about-img-wrap">
+    <div class="about-img-wrap fade-left">
       <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1000,fit=crop/Y4LE1e8aWwFnMvjE/img_3405-Yan9N4LN3lsXaRZa.JPG" alt="SMC Crew">
     </div>
-    <div class="about-body">
+    <div class="about-body fade-right">
       <div class="label">Our Story</div>
       <h2 class="sec-title">Meet the <em>Crew</em></h2>
       <div class="divider"></div>
@@ -387,18 +475,13 @@ footer ul a:hover{color:var(--gold)}
         <li>Eco-friendly products &amp; water-saving techniques</li>
         <li>5.0 stars across 18+ Google reviews</li>
       </ul>
-      <a href="tel:4342414892" class="btn-primary" style="display:inline-block">Call Gerald — 434-241-4892</a>
+      <a href="tel:4342414892" class="btn-primary">Call Gerald — 434-241-4892</a>
       <div class="gerald-badge">
         <div class="g-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=297,h=238,fit=crop,trim=165.80678851174935;1688.5479452054794;979.0496083550914;0/Y4LE1e8aWwFnMvjE/img_1553-A0xNjO28ypHkk4Xr.JPG" alt="Gerald"></div>
-        <div>
-          <div class="g-name">Gerald</div>
-          <div class="g-role">Owner &amp; Founder</div>
-          <div class="g-years">7+ Years Experience · Car Enthusiast</div>
-        </div>
+        <div><div class="g-name">Gerald</div><div class="g-role">Owner &amp; Founder</div><div class="g-years">7+ Years Experience · Car Enthusiast</div></div>
       </div>
     </div>
   </div>
-
   <section class="section">
     <div style="text-align:center;margin-bottom:3rem">
       <div class="label" style="justify-content:center">Our Mission</div>
@@ -406,13 +489,12 @@ footer ul a:hover{color:var(--gold)}
       <div class="divider" style="margin-inline:auto"></div>
     </div>
     <div class="pillars" style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
-      <div class="pillar"><div class="pillar-ico">🏆</div><div class="pillar-title">Unmatched Expertise</div><p class="pillar-body">Trained in the latest techniques, products, and equipment.</p></div>
-      <div class="pillar"><div class="pillar-ico">🏠</div><div class="pillar-title">Convenience First</div><p class="pillar-body">Fully-equipped mobile units — at your home or office.</p></div>
-      <div class="pillar"><div class="pillar-ico">🎯</div><div class="pillar-title">Customized Care</div><p class="pillar-body">Packages tailored to your vehicle's specific needs.</p></div>
-      <div class="pillar"><div class="pillar-ico">🌿</div><div class="pillar-title">Eco-Friendly</div><p class="pillar-body">Biodegradable products and water-saving techniques.</p></div>
+      <div class="pillar fade"><div class="pillar-ico">🏆</div><div class="pillar-title">Unmatched Expertise</div><p class="pillar-body">Trained in the latest techniques, products, and equipment.</p></div>
+      <div class="pillar fade d1"><div class="pillar-ico">🏠</div><div class="pillar-title">Convenience First</div><p class="pillar-body">Fully-equipped mobile units — at your home or office.</p></div>
+      <div class="pillar fade d2"><div class="pillar-ico">🎯</div><div class="pillar-title">Customized Care</div><p class="pillar-body">Packages tailored to your vehicle's specific needs.</p></div>
+      <div class="pillar fade d3"><div class="pillar-ico">🌿</div><div class="pillar-title">Eco-Friendly</div><p class="pillar-body">Biodegradable products and water-saving techniques.</p></div>
     </div>
   </section>
-
   <div class="cta-band">
     <div class="label">Ready?</div>
     <h2>Let Us Take Care of Your Vehicle</h2>
@@ -423,72 +505,21 @@ footer ul a:hover{color:var(--gold)}
 </div>
 
 
-<!-- SERVICES -->
+<!-- ══ SERVICES ══ -->
 <div id="page-services" class="page">
   <section class="section">
     <div class="services-head">
-      <div>
+      <div class="fade-left">
         <div class="label">What We Offer</div>
         <h2 class="sec-title">Services &amp; <em>Pricing</em></h2>
         <div class="divider"></div>
       </div>
-      <p class="sec-sub">All packages are performed on-site with professional-grade equipment and premium products. Prices are starting rates — contact us for an exact quote on your vehicle.</p>
+      <p class="sec-sub fade-right">All packages are performed on-site with professional-grade equipment and premium products. Prices are starting rates — contact us for an exact quote.</p>
     </div>
     <div class="packages">
-      <div class="pkg">
-        <div class="pkg-name">Refresh &amp; Shine</div>
-        <div class="pkg-tag">Basic Detailing Package</div>
-        <div class="pkg-from">Starting from</div>
-        <div class="pkg-price">$100</div>
-        <div class="pkg-price-sub">$160+ for large trucks, vans &amp; SUVs</div>
-        <ul class="pkg-list">
-          <li>Exterior Hand Wash &amp; Dry</li>
-          <li>Tire and Wheel Cleaning</li>
-          <li>Interior Vacuuming</li>
-          <li>Window Cleaning</li>
-          <li>Premium Wax Application</li>
-          <li>All Dash &amp; Door Panels Cleaned</li>
-        </ul>
-        <a href="tel:4342414892" class="pkg-btn">Book This Package</a>
-      </div>
-      <div class="pkg featured">
-        <div class="pkg-badge">Most Popular</div>
-        <div class="pkg-name">Showroom Sparkle</div>
-        <div class="pkg-tag">Premium Detailing Package</div>
-        <div class="pkg-from">Starting from</div>
-        <div class="pkg-price">$250</div>
-        <div class="pkg-price-sub">$350+ for large trucks, vans &amp; SUVs</div>
-        <ul class="pkg-list">
-          <li>Complete Hand Wash &amp; Dry</li>
-          <li>Clay Bar Paint Decontamination</li>
-          <li>Interior Vacuuming &amp; Steam Cleaning</li>
-          <li>Leather Conditioning</li>
-          <li>Engine Bay Detailing</li>
-          <li>Paint Sealant Application</li>
-          <li>Dash &amp; Door Panels — Shine Applied</li>
-        </ul>
-        <a href="tel:4342414892" class="pkg-btn">Book This Package</a>
-      </div>
-      <div class="pkg">
-        <div class="pkg-name">Ultimate Elegance</div>
-        <div class="pkg-tag">Luxury Detailing Package</div>
-        <div class="pkg-from">Starting from</div>
-        <div class="pkg-price">$500</div>
-        <div class="pkg-price-sub">$950+ for large trucks, vans &amp; SUVs</div>
-        <ul class="pkg-list">
-          <li>Exterior Hand Wash &amp; Dry</li>
-          <li>Tire, Wheel &amp; Wheel Well Recondition</li>
-          <li>Hard Water Spot Removal</li>
-          <li>Clay Bar Decontamination</li>
-          <li>Full Paint Correction</li>
-          <li>High-Intensity Ceramic Coating</li>
-          <li>Deep Interior Shampooing &amp; Stain Removal</li>
-          <li>Steam Cleaning &amp; Leather Restoration</li>
-          <li>Headlight Restoration</li>
-          <li>Complete Engine Bay Detailing</li>
-        </ul>
-        <a href="tel:4342414892" class="pkg-btn">Book This Package</a>
-      </div>
+      <div class="pkg fade"><div class="pkg-name">Refresh &amp; Shine</div><div class="pkg-tag">Basic Detailing Package</div><div class="pkg-from">Starting from</div><div class="pkg-price">$100</div><div class="pkg-price-sub">$160+ for large trucks, vans &amp; SUVs</div><ul class="pkg-list"><li>Exterior Hand Wash &amp; Dry</li><li>Tire and Wheel Cleaning</li><li>Interior Vacuuming</li><li>Window Cleaning</li><li>Premium Wax Application</li><li>All Dash &amp; Door Panels Cleaned</li></ul><a href="tel:4342414892" class="pkg-btn">Book This Package</a></div>
+      <div class="pkg featured fade d1"><div class="pkg-badge">Most Popular</div><div class="pkg-name">Showroom Sparkle</div><div class="pkg-tag">Premium Detailing Package</div><div class="pkg-from">Starting from</div><div class="pkg-price">$250</div><div class="pkg-price-sub">$350+ for large trucks, vans &amp; SUVs</div><ul class="pkg-list"><li>Complete Hand Wash &amp; Dry</li><li>Clay Bar Paint Decontamination</li><li>Interior Vacuuming &amp; Steam Cleaning</li><li>Leather Conditioning</li><li>Engine Bay Detailing</li><li>Paint Sealant Application</li><li>Dash &amp; Door Panels — Shine Applied</li></ul><a href="tel:4342414892" class="pkg-btn">Book This Package</a></div>
+      <div class="pkg fade d2"><div class="pkg-name">Ultimate Elegance</div><div class="pkg-tag">Luxury Detailing Package</div><div class="pkg-from">Starting from</div><div class="pkg-price">$500</div><div class="pkg-price-sub">$950+ for large trucks, vans &amp; SUVs</div><ul class="pkg-list"><li>Exterior Hand Wash &amp; Dry</li><li>Tire, Wheel &amp; Wheel Well Recondition</li><li>Hard Water Spot Removal</li><li>Clay Bar Decontamination</li><li>Full Paint Correction</li><li>High-Intensity Ceramic Coating</li><li>Deep Interior Shampooing &amp; Stain Removal</li><li>Steam Cleaning &amp; Leather Restoration</li><li>Headlight Restoration</li><li>Complete Engine Bay Detailing</li></ul><a href="tel:4342414892" class="pkg-btn">Book This Package</a></div>
     </div>
   </section>
   <div class="cta-band">
@@ -501,46 +532,103 @@ footer ul a:hover{color:var(--gold)}
 </div>
 
 
-<!-- PORTFOLIO -->
-<div id="page-portfolio" class="page">
-  <section class="section">
-    <div class="gallery-head fade">
-      <div class="label" style="justify-content:center">Our Work</div>
-      <h2 class="sec-title">Portfolio</h2>
-      <div class="divider"></div>
-      <p class="sec-sub" style="margin:0 auto;text-align:center">Check out our latest jobs. Follow us on social media for new results every week.</p>
+<!-- ══ PORTFOLIO ══ -->
+<div id="page-portfolio" class="page portfolio-page">
+
+  <!-- Hero -->
+  <div class="port-hero">
+    <div class="port-hero-bg"></div>
+    <div class="port-hero-overlay"></div>
+    <div class="port-hero-content">
+      <div class="label">Our Work</div>
+      <h2><em>Showroom</em><br>Quality Results</h2>
     </div>
-    <div class="mosaic" style="margin-top:2.5rem">
-      <div class="m-item wide tall"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400,fit=crop/Y4LE1e8aWwFnMvjE/img_6131-A0xwN90y61F5DVgV.JPG" alt="Detail work"></div>
-      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_7233-AQEZzveJXGF9p09j.JPG" alt="Ceramic coating"></div>
-      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_1550-AVLJ1oZEZrcGyyKo.JPG" alt="Paint correction"></div>
-      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_4540-Yg2WpMywxPigVBXR.JPG" alt="Interior detail"></div>
-      <div class="m-item wide"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/Y4LE1e8aWwFnMvjE/img_2709-YX4PDGNVJbh1QXRV.JPG" alt="Motorcycle detail"></div>
-      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_0585-YKbNyRVwRofqDEzd.JPG" alt="Auto detailing"></div>
-      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_0647-mjE5nJjv42Hyyq4v.JPG" alt="Before after"></div>
-      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_1690-mjEGq1prOZS3b6zo.JPG" alt="Result"></div>
-      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_7221-Aq2J8yGNJXf2De84.JPG" alt="Detail"></div>
-      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_0203-A85w9ZkLOWSBMJb1.JPG" alt="Detail"></div>
-      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_4327-AoPvEMR5DqT1EzV2.JPG" alt="Detail"></div>
-      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_0320-m6LwWO9jZkfKQywx.JPG" alt="Detail"></div>
+  </div>
+
+  <!-- Spotlight feature -->
+  <div class="port-spotlight">
+    <div class="port-main">
+      <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400,fit=crop/Y4LE1e8aWwFnMvjE/img_6131-A0xwN90y61F5DVgV.JPG" alt="Featured detail work">
+      <div class="port-main-label">Ceramic Coating — Full Detail</div>
     </div>
-  </section>
+    <div class="port-stack">
+      <div class="port-stack-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_7233-AQEZzveJXGF9p09j.JPG" alt="Ceramic coating"></div>
+      <div class="port-stack-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_1550-AVLJ1oZEZrcGyyKo.JPG" alt="Paint correction"></div>
+      <div class="port-stack-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_4540-Yg2WpMywxPigVBXR.JPG" alt="Interior detail"></div>
+    </div>
+  </div>
+
+  <!-- Film strip scroll -->
+  <div class="port-strip-wrap">
+    <div class="port-strip-label">
+      <p>Drag to explore more →</p>
+      <div class="label" style="margin:0">All Vehicles · All Services</div>
+    </div>
+    <div class="port-strip" id="port-strip">
+      <div class="port-strip-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/Y4LE1e8aWwFnMvjE/img_2709-YX4PDGNVJbh1QXRV.JPG" alt="Motorcycle"></div>
+      <div class="port-strip-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/Y4LE1e8aWwFnMvjE/img_0585-YKbNyRVwRofqDEzd.JPG" alt="Detail"></div>
+      <div class="port-strip-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/Y4LE1e8aWwFnMvjE/img_0647-mjE5nJjv42Hyyq4v.JPG" alt="Detail"></div>
+      <div class="port-strip-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/Y4LE1e8aWwFnMvjE/img_1690-mjEGq1prOZS3b6zo.JPG" alt="Detail"></div>
+      <div class="port-strip-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/Y4LE1e8aWwFnMvjE/img_7221-Aq2J8yGNJXf2De84.JPG" alt="Detail"></div>
+      <div class="port-strip-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/Y4LE1e8aWwFnMvjE/img_0203-A85w9ZkLOWSBMJb1.JPG" alt="Detail"></div>
+      <div class="port-strip-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/Y4LE1e8aWwFnMvjE/img_4327-AoPvEMR5DqT1EzV2.JPG" alt="Detail"></div>
+      <div class="port-strip-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/Y4LE1e8aWwFnMvjE/img_0320-m6LwWO9jZkfKQywx.JPG" alt="Detail"></div>
+      <div class="port-strip-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/Y4LE1e8aWwFnMvjE/img_4309-YrDlLeyy7BfVLED0.JPG" alt="Detail"></div>
+      <div class="port-strip-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/Y4LE1e8aWwFnMvjE/img_0588-mnlq5r4O4RtZ0wRM.JPG" alt="Detail"></div>
+      <div class="port-strip-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/Y4LE1e8aWwFnMvjE/img_1644-AzGNyowMG1t70gkz.JPG" alt="Detail"></div>
+      <div class="port-strip-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,fit=crop/Y4LE1e8aWwFnMvjE/img_7234-AVLa40xN7JiXxox3.JPG" alt="Detail"></div>
+    </div>
+  </div>
+
+  <!-- Editorial grid -->
+  <div class="port-editorial">
+    <div class="port-ed-item tall"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_4356-ALpnX34k3gh04VZe.JPG" alt="Detail"><div class="port-ed-overlay"></div><div class="port-ed-tag">Paint Correction</div></div>
+    <div class="port-ed-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_4303-YD06jVJJ4eUoKNno.JPG" alt="Detail"><div class="port-ed-overlay"></div><div class="port-ed-tag">Interior Detail</div></div>
+    <div class="port-ed-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_0117-YBgrw85qXPcREQ80.JPG" alt="Detail"><div class="port-ed-overlay"></div><div class="port-ed-tag">Exterior Shine</div></div>
+    <div class="port-ed-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_7230-YNq2nVMNwjU2nGJg.JPG" alt="Detail"><div class="port-ed-overlay"></div><div class="port-ed-tag">Ceramic Coating</div></div>
+    <div class="port-ed-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_0200-mp8vb6zLQRuVQ0aV.JPG" alt="Detail"><div class="port-ed-overlay"></div><div class="port-ed-tag">Full Detail</div></div>
+  </div>
+
+  <!-- Social follow -->
+  <div class="social-follow">
+    <div>
+      <p>Follow For More Results</p>
+      <div style="font-size:.82rem;color:rgba(242,240,234,.5);margin-top:.25rem">New work posted every week</div>
+    </div>
+    <div class="social-links-row">
+      <a href="https://www.instagram.com/superiormobilecoatings" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.facebook.com/smc434" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a href="https://www.youtube.com/@SuperiorMobileCoatings434" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+        YouTube
+      </a>
+    </div>
+  </div>
 </div>
 
 
-<!-- VIDEOS -->
+<!-- ══ VIDEOS ══ -->
 <div id="page-videos" class="page">
   <section class="section">
-    <div class="gallery-head fade">
+    <div style="text-align:center;margin-bottom:2.5rem" class="fade">
       <div class="label" style="justify-content:center">Watch Us Work</div>
       <h2 class="sec-title">Our <em>Videos</em></h2>
       <div class="divider"></div>
       <p class="sec-sub" style="margin:0 auto;text-align:center">See our detailing work in action — real results, real customers.</p>
     </div>
-    <div class="videos-grid" style="margin-top:2.5rem">
-      <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/tfbuaunUdwA" title="SMC Video 1" allowfullscreen></iframe></div>
-      <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/v7A9SJ5z7J0" title="SMC Video 2" allowfullscreen></iframe></div>
-      <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/0IIuhG4NhHg" title="SMC Video 3" allowfullscreen></iframe></div>
+    <div class="videos-grid">
+      <div class="vid-wrap fade"><iframe src="https://www.youtube.com/embed/tfbuaunUdwA" title="SMC Video 1" allowfullscreen></iframe></div>
+      <div class="vid-wrap fade d1"><iframe src="https://www.youtube.com/embed/v7A9SJ5z7J0" title="SMC Video 2" allowfullscreen></iframe></div>
+      <div class="vid-wrap fade d2"><iframe src="https://www.youtube.com/embed/0IIuhG4NhHg" title="SMC Video 3" allowfullscreen></iframe></div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="https://www.youtube.com/@SuperiorMobileCoatings434" target="_blank" class="btn-primary">Subscribe on YouTube ↗</a>
     </div>
   </section>
   <div class="cta-band">
@@ -553,52 +641,63 @@ footer ul a:hover{color:var(--gold)}
 </div>
 
 
-<!-- BLOG -->
+<!-- ══ BLOG ══ -->
 <div id="page-blog" class="page">
   <section class="section">
-    <div class="gallery-head fade">
+    <div style="text-align:center;margin-bottom:2.5rem" class="fade">
       <div class="label" style="justify-content:center">Tips &amp; News</div>
       <h2 class="sec-title">Our <em>Blog</em></h2>
       <div class="divider"></div>
       <p class="sec-sub" style="margin:0 auto;text-align:center">Detailing tips, product guides, and updates from the SMC crew.</p>
     </div>
-    <div class="blog-grid" style="margin-top:2.5rem">
-      <div class="blog-card">
-        <div class="blog-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_1550-AVLJ1oZEZrcGyyKo.JPG" alt="Ceramic Coating"></div>
-        <div class="blog-body"><div class="blog-cat">Ceramic Coatings</div><div class="blog-title">Why Ceramic Coatings Are Worth Every Penny</div><p class="blog-excerpt">Ceramic coatings offer long-term protection that wax simply can't match. Here's what you need to know before booking.</p></div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_7233-AQEZzveJXGF9p09j.JPG" alt="Paint Correction"></div>
-        <div class="blog-body"><div class="blog-cat">Paint Correction</div><div class="blog-title">What Is Paint Correction and Do You Need It?</div><p class="blog-excerpt">Swirl marks, scratches, water spots — paint correction removes them all. Find out if your vehicle is a candidate.</p></div>
-      </div>
-      <div class="blog-card">
-        <div class="blog-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_4540-Yg2WpMywxPigVBXR.JPG" alt="Interior Detailing"></div>
-        <div class="blog-body"><div class="blog-cat">Interior Detailing</div><div class="blog-title">5 Signs Your Car Interior Needs a Deep Clean</div><p class="blog-excerpt">From pet hair to stubborn stains, here are the signs that it's time to call in the professionals.</p></div>
-      </div>
+    <div class="blog-grid">
+      <div class="blog-card fade"><div class="blog-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_1550-AVLJ1oZEZrcGyyKo.JPG" alt="Ceramic Coating"></div><div class="blog-body"><div class="blog-cat">Ceramic Coatings</div><div class="blog-title">Why Ceramic Coatings Are Worth Every Penny</div><p class="blog-excerpt">Long-term protection that wax simply can't match. Here's what you need to know before booking.</p></div></div>
+      <div class="blog-card fade d1"><div class="blog-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_7233-AQEZzveJXGF9p09j.JPG" alt="Paint Correction"></div><div class="blog-body"><div class="blog-cat">Paint Correction</div><div class="blog-title">What Is Paint Correction and Do You Need It?</div><p class="blog-excerpt">Swirl marks, scratches, water spots — paint correction removes them all. Is your vehicle a candidate?</p></div></div>
+      <div class="blog-card fade d2"><div class="blog-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_4540-Yg2WpMywxPigVBXR.JPG" alt="Interior"></div><div class="blog-body"><div class="blog-cat">Interior Detailing</div><div class="blog-title">5 Signs Your Car Interior Needs a Deep Clean</div><p class="blog-excerpt">From pet hair to stubborn stains — here are the signs it's time to call in the professionals.</p></div></div>
     </div>
   </section>
 </div>
 
 
-<!-- CONTACT -->
+<!-- ══ CONTACT ══ -->
 <div id="page-contact" class="page">
   <section class="section">
-    <div class="label">Get in Touch</div>
-    <h2 class="sec-title" style="margin-bottom:.5rem">Contact <em>Us</em></h2>
-    <div class="divider"></div>
+    <div class="fade">
+      <div class="label">Get in Touch</div>
+      <h2 class="sec-title" style="margin-bottom:.5rem">Contact <em>Us</em></h2>
+      <div class="divider"></div>
+    </div>
     <div class="contact-grid" style="margin-top:3rem">
-      <div>
+      <div class="fade-left">
         <div class="contact-info">
           <div class="contact-item"><div class="c-ico">📞</div><div><div class="c-label">Phone / Text</div><div class="c-val"><a href="tel:4342414892">434-241-4892</a></div></div></div>
           <div class="contact-item"><div class="c-ico">✉️</div><div><div class="c-label">Email</div><div class="c-val"><a href="mailto:superiormobilecoatings@gmail.com">superiormobilecoatings@gmail.com</a></div></div></div>
           <div class="contact-item"><div class="c-ico">📍</div><div><div class="c-label">Address</div><div class="c-val">124 Longview Drive<br>Madison Heights, VA 24572</div></div></div>
           <div class="contact-item"><div class="c-ico">🕐</div><div><div class="c-label">Hours</div><div class="c-val">Available by appointment<br><span style="font-size:.76rem;color:var(--muted)">Call or text to schedule</span></div></div></div>
         </div>
-        <div style="margin-top:2.5rem;border-radius:var(--radius);overflow:hidden;height:240px">
-          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1000,fit=crop/Y4LE1e8aWwFnMvjE/img_0565-dWx0ZqgEn8CrgLVX.JPG" alt="SMC" style="width:100%;height:100%;object-fit:cover">
+        <div class="contact-socials">
+          <h4>Follow Us</h4>
+          <div class="contact-social-cards">
+            <a href="https://www.facebook.com/smc434" target="_blank" class="contact-social-card">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              <div><span>Facebook</span><small>facebook.com/smc434</small></div>
+            </a>
+            <a href="https://www.instagram.com/superiormobilecoatings" target="_blank" class="contact-social-card">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              <div><span>Instagram</span><small>@superiormobilecoatings</small></div>
+            </a>
+            <a href="https://www.youtube.com/@SuperiorMobileCoatings434" target="_blank" class="contact-social-card">
+              <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+              <div><span>YouTube</span><small>@SuperiorMobileCoatings434</small></div>
+            </a>
+            <a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank" class="contact-social-card">
+              <svg viewBox="0 0 24 24"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
+              <div><span>Google Reviews</span><small>5.0 Stars · 18 Reviews</small></div>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="cf-box">
+      <div class="cf-box fade-right">
         <h3>Request a Quote</h3>
         <p>Fill out the form and we'll get back to you same day.</p>
         <div class="cf-row">
@@ -608,16 +707,7 @@ footer ul a:hover{color:var(--gold)}
         <div class="cf-group"><label>Phone Number</label><input type="tel" placeholder="434-000-0000"></div>
         <div class="cf-group"><label>Email Address</label><input type="email" placeholder="you@email.com"></div>
         <div class="cf-group"><label>Service Needed</label>
-          <select>
-            <option value="" disabled selected>Select a service</option>
-            <option>Refresh &amp; Shine — Basic Detail</option>
-            <option>Showroom Sparkle — Premium Detail</option>
-            <option>Ultimate Elegance — Luxury Detail</option>
-            <option>Ceramic Coating</option>
-            <option>Paint Correction</option>
-            <option>Headlight Restoration</option>
-            <option>Other / Not Sure</option>
-          </select>
+          <select><option value="" disabled selected>Select a service</option><option>Refresh &amp; Shine — Basic Detail</option><option>Showroom Sparkle — Premium Detail</option><option>Ultimate Elegance — Luxury Detail</option><option>Ceramic Coating</option><option>Paint Correction</option><option>Headlight Restoration</option><option>Other / Not Sure</option></select>
         </div>
         <div class="cf-group"><label>Vehicle Year, Make &amp; Model</label><input type="text" placeholder="e.g. 2019 Ford F-150"></div>
         <div class="cf-group"><label>Message (Optional)</label><textarea placeholder="Any additional details..."></textarea></div>
@@ -636,11 +726,17 @@ footer ul a:hover{color:var(--gold)}
     <p style="margin-top:.75rem">📍 124 Longview Dr, Madison Heights, VA 24572</p>
     <p style="margin-top:.3rem">📞 <a href="tel:4342414892" style="color:var(--gold);text-decoration:none">434-241-4892</a></p>
     <p style="margin-top:.3rem">✉️ <a href="mailto:superiormobilecoatings@gmail.com" style="color:var(--gold);text-decoration:none">superiormobilecoatings@gmail.com</a></p>
+    <div class="f-socials">
+      <a href="https://www.facebook.com/smc434" target="_blank" class="f-social" title="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+      <a href="https://www.instagram.com/superiormobilecoatings" target="_blank" class="f-social" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      <a href="https://www.youtube.com/@SuperiorMobileCoatings434" target="_blank" class="f-social" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></a>
+      <a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank" class="f-social" title="Google Reviews"><svg viewBox="0 0 24 24"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg></a>
+    </div>
   </div>
   <div>
     <h5>Services</h5>
     <ul>
-      <li><a onclick="go('services',document.querySelectorAll('.nav-pills button')[2])">Refresh &amp; Shine — Basic Detail</a></li>
+      <li><a onclick="go('services',document.querySelectorAll('.nav-pills button')[2])">Refresh &amp; Shine — Basic</a></li>
       <li><a onclick="go('services',document.querySelectorAll('.nav-pills button')[2])">Showroom Sparkle — Premium</a></li>
       <li><a onclick="go('services',document.querySelectorAll('.nav-pills button')[2])">Ultimate Elegance — Luxury</a></li>
       <li><a onclick="go('services',document.querySelectorAll('.nav-pills button')[2])">Ceramic Coatings</a></li>
@@ -659,11 +755,21 @@ footer ul a:hover{color:var(--gold)}
       <li><a onclick="go('blog',document.querySelectorAll('.nav-pills button')[5])">Blog</a></li>
       <li><a onclick="go('contact',document.querySelectorAll('.nav-pills button')[6])">Contact Us</a></li>
     </ul>
+    <div style="margin-top:1.8rem">
+      <h5>Follow Us</h5>
+      <ul>
+        <li><a href="https://www.facebook.com/smc434" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/superiormobilecoatings" target="_blank">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@SuperiorMobileCoatings434" target="_blank">YouTube</a></li>
+        <li><a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank">Google Reviews</a></li>
+      </ul>
+    </div>
   </div>
 </footer>
 <div class="f-bar">© 2025 Superior Mobile Coatings &nbsp;·&nbsp; All Rights Reserved &nbsp;·&nbsp; Madison Heights, VA</div>
 
 <script>
+// ── PAGE NAV ──
 function go(id, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
@@ -672,28 +778,76 @@ function go(id, btn) {
   window.scrollTo({top: 0, behavior: 'smooth'});
   setTimeout(initFades, 80);
 }
+
+// ── MOBILE MENU ──
 function toggleMenu() {
   const menu = document.getElementById('mobile-menu');
-  const btn = document.getElementById('hamburger');
+  const hamburger = document.getElementById('hamburger');
+  const promo = document.getElementById('promo-bar');
+  const nav = document.getElementById('main-nav');
+  // Calculate exact top offset so drawer starts right below nav
+  const offset = promo.offsetHeight + nav.offsetHeight;
+  menu.style.top = offset + 'px';
   menu.classList.toggle('open');
-  btn.classList.toggle('open');
+  hamburger.classList.toggle('open');
 }
+
 function goMob(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
-  document.querySelectorAll('.mobile-menu button').forEach(b => b.classList.remove('active'));
   document.getElementById('mobile-menu').classList.remove('open');
   document.getElementById('hamburger').classList.remove('open');
   window.scrollTo({top: 0, behavior: 'smooth'});
   setTimeout(initFades, 80);
 }
+
+// ── SCROLL ANIMATIONS ──
 function initFades() {
+  const classes = ['.fade', '.fade-left', '.fade-right', '.fade-scale'];
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
-  }, {threshold: 0.1});
-  document.querySelectorAll('.fade:not(.in)').forEach(el => io.observe(el));
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.08});
+  classes.forEach(cls => {
+    document.querySelectorAll(cls + ':not(.in)').forEach(el => io.observe(el));
+  });
 }
 initFades();
+
+// ── COUNTER ANIMATION ──
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseFloat(el.dataset.count);
+    const isDecimal = target % 1 !== 0;
+    let start = 0;
+    const duration = 1800;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const val = eased * target;
+      el.textContent = isDecimal ? val.toFixed(1) : Math.floor(val) + (progress < 1 ? '' : '+');
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = isDecimal ? target.toFixed(1) : target + '+';
+    };
+    requestAnimationFrame(step);
+  });
+}
+setTimeout(animateCounters, 600);
+
+// ── DRAG TO SCROLL (film strip) ──
+const strip = document.getElementById('port-strip');
+if (strip) {
+  let isDown = false, startX, scrollLeft;
+  strip.addEventListener('mousedown', e => { isDown = true; strip.classList.add('grabbing'); startX = e.pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft; });
+  strip.addEventListener('mouseleave', () => { isDown = false; strip.classList.remove('grabbing'); });
+  strip.addEventListener('mouseup', () => { isDown = false; strip.classList.remove('grabbing'); });
+  strip.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); const x = e.pageX - strip.offsetLeft; strip.scrollLeft = scrollLeft - (x - startX) * 1.5; });
+  // Touch support
+  strip.addEventListener('touchstart', e => { startX = e.touches[0].pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft; });
+  strip.addEventListener('touchmove', e => { const x = e.touches[0].pageX - strip.offsetLeft; strip.scrollLeft = scrollLeft - (x - startX) * 1.5; });
+}
 </script>
 </body>
 </html>
