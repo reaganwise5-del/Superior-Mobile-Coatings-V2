@@ -137,8 +137,8 @@ h1.hero-title em{font-style:italic;color:var(--gold);font-weight:400}
 .star-row{font-size:1.3rem;color:var(--gold);letter-spacing:.1em;margin:.45rem 0 .25rem}
 .rating-note{font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
-.rev-card{background:var(--bg2);padding:2.3rem 2rem;transition:background .3s}
-.rev-card:hover{background:var(--bg3)}
+.rev-card{background:var(--bg2);padding:2.3rem 2rem;transition:background .3s,transform .3s;cursor:pointer;text-decoration:none;display:block;color:inherit}
+.rev-card:hover{background:var(--bg3);transform:translateY(-3px)}
 .rev-stars{color:var(--gold);font-size:.76rem;letter-spacing:.07em;margin-bottom:1rem}
 .rev-text{font-family:'Playfair Display',serif;font-style:italic;font-size:.97rem;line-height:1.7;color:rgba(242,240,234,.8);margin-bottom:1.3rem}
 .rev-open{color:var(--gold);font-size:1.3rem;vertical-align:-4px;margin-right:2px}
@@ -333,16 +333,21 @@ footer ul a:hover{color:var(--gold)}
       <div class="label" style="justify-content:center">What Clients Say</div>
       <h2 class="sec-title">5-Star Reviews</h2>
       <div class="divider"></div>
-      <div class="star-row">★★★★★</div>
-      <p class="rating-note">5.0 Rating · 18 Google Reviews</p>
+      <a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank" style="text-decoration:none">
+        <div class="star-row">★★★★★</div>
+        <p class="rating-note" style="color:var(--gold)">5.0 Rating · 18 Google Reviews · Click to see all ↗</p>
+      </a>
     </div>
     <div class="rev-grid">
-      <div class="rev-card fade"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Quality work and professional service at a reasonable price. Everything is explained 100% — you will know exactly what services you'll receive.</p><div class="rev-name">Scott Housman</div><div class="rev-when">1 month ago</div></div>
-      <div class="rev-card fade d1"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Gerald did a wonderful job on my 2017 Honda Pilot! Looks brand new. He even did extra things he didn't charge me for. I've got 4 kids and a pet — it's never looked this good!</p><div class="rev-name">Crystal (DreamZelda)</div><div class="rev-when">10 months ago</div></div>
-      <div class="rev-card fade d2"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Came out on very short notice and got our car looking amazing. I think it looks better than the day we bought it! Will definitely be calling again.</p><div class="rev-name">Lisa Dean</div><div class="rev-when">Local Guide · 1 year ago</div></div>
-      <div class="rev-card fade"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Super knowledgeable and dedicated. Went above and beyond at a reasonable price. Interior and exterior are at showroom quality again.</p><div class="rev-name">Jace Lowe</div><div class="rev-when">Local Guide · 1 year ago</div></div>
-      <div class="rev-card fade d1"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>He showed up early even though it was drizzling and still gave it his full effort. That alone showed me how serious he is about his work.</p><div class="rev-name">Reagan Wise</div><div class="rev-when">Verified Customer</div></div>
-      <div class="rev-card fade d2"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Phenomenal job!!! The best mobile detailing in the Lynchburg area. I will not use anyone else to detail my car.</p><div class="rev-name">Newland Isaac</div><div class="rev-when">2 weeks ago</div></div>
+      <a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank" class="rev-card fade"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Quality work and professional service at a reasonable price. Everything is explained 100% — you will know exactly what services you'll receive.</p><div class="rev-name">Scott Housman</div><div class="rev-when">1 month ago</div></a>
+      <a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank" class="rev-card fade d1"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Gerald did a wonderful job on my 2017 Honda Pilot! Looks brand new. He even did extra things he didn't charge me for. I've got 4 kids and a pet — it's never looked this good!</p><div class="rev-name">Crystal (DreamZelda)</div><div class="rev-when">10 months ago</div></a>
+      <a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank" class="rev-card fade d2"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Came out on very short notice and got our car looking amazing. I think it looks better than the day we bought it! Will definitely be calling again.</p><div class="rev-name">Lisa Dean</div><div class="rev-when">Local Guide · 1 year ago</div></a>
+      <a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank" class="rev-card fade"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Super knowledgeable and dedicated. Went above and beyond at a reasonable price. Interior and exterior are at showroom quality again.</p><div class="rev-name">Jace Lowe</div><div class="rev-when">Local Guide · 1 year ago</div></a>
+      <a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank" class="rev-card fade d1"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>He showed up early even though it was drizzling and still gave it his full effort. That alone showed me how serious he is about his work.</p><div class="rev-name">Reagan Wise</div><div class="rev-when">Verified Customer</div></a>
+      <a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank" class="rev-card fade d2"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Phenomenal job!!! The best mobile detailing in the Lynchburg area. I will not use anyone else to detail my car.</p><div class="rev-name">Newland Isaac</div><div class="rev-when">2 weeks ago</div></a>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="https://share.google/8iMGweN6mwECxDfyw" target="_blank" class="btn-primary" style="display:inline-block">Read All Reviews on Google ↗</a>
     </div>
   </section>
 
