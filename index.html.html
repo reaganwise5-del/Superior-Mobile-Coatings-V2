@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Superior Mobile Coatings | Lynchburg, VA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0d;--bg2:#111115;--bg3:#16161c;--card:#1a1a22;--gold:#c9a84c;--gold2:#e2c97e;--dim:rgba(201,168,76,.12);--white:#f2f0ea;--muted:rgba(242,240,234,.5);--border:rgba(255,255,255,.07);--radius:14px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.promo-bar{background:var(--gold);color:#000;text-align:center;padding:.55rem 1rem;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;position:relative;z-index:300}
+.promo-bar a{color:#000}
+nav{position:sticky;top:0;z-index:200;background:rgba(11,11,13,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.9rem 2.5rem;display:flex;align-items:center;gap:1.5rem}
+.nav-logo{height:40px;flex-shrink:0;mix-blend-mode:lighten;filter:brightness(1.1)}
+.nav-pills{display:flex;align-items:center;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:100px;padding:.28rem;gap:.1rem;margin:0 auto}
+.nav-pills button{background:none;border:none;color:rgba(242,240,234,.6);font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.05em;padding:.4rem 1rem;border-radius:100px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.nav-pills button:hover{color:var(--white)}
+.nav-pills button.active{background:var(--gold);color:#000}
+.nav-cta{background:var(--gold);color:#000;font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.06em;padding:.5rem 1.3rem;border-radius:100px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background .2s}
+.nav-cta:hover{background:var(--gold2)}
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem;margin-left:auto;flex-shrink:0}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* MOBILE DRAWER */
+.mobile-menu{display:none;position:fixed;inset:0;top:60px;background:rgba(11,11,13,.98);backdrop-filter:blur(20px);z-index:199;flex-direction:column;padding:2rem 1.5rem;gap:.5rem;overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-menu button{background:none;border:none;color:rgba(242,240,234,.7);font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:500;padding:1rem 0;border-bottom:1px solid var(--border);text-align:left;cursor:pointer;transition:color .2s;width:100%}
+.mobile-menu button:hover,.mobile-menu button.active{color:var(--gold)}
+.mobile-menu .mob-cta{background:var(--gold);color:#000;border:none;border-radius:100px;padding:.9rem;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;margin-top:1rem;text-align:center;text-decoration:none;display:block}
+.page{display:none}.page.active{display:block}
+
+/* HERO */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1920,fit=crop/Y4LE1e8aWwFnMvjE/img_6131-A0xwN90y61F5DVgV.JPG') center/cover no-repeat;animation:zoomIn 12s ease-out forwards}
+@keyframes zoomIn{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(11,11,13,.96) 36%,rgba(11,11,13,.55) 68%,rgba(11,11,13,.18) 100%)}
+.hero-inner{position:relative;z-index:2;padding:5rem 3rem 3rem;display:grid;grid-template-columns:1fr 370px;gap:3.5rem;align-items:center;width:100%;max-width:1280px}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);border-radius:100px;padding:.28rem .9rem .28rem .4rem;font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:1.3rem}
+.hero-badge span{background:var(--gold);color:#000;border-radius:100px;padding:.1rem .5rem;font-size:.58rem}
+h1.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,6.5vw,6rem);line-height:.95;font-weight:700;margin-bottom:1.3rem}
+h1.hero-title em{font-style:italic;color:var(--gold);font-weight:400}
+.hero-sub{font-size:.88rem;color:var(--muted);line-height:1.8;max-width:400px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:#000;padding:.78rem 1.9rem;border-radius:100px;font-size:.76rem;font-weight:700;letter-spacing:.05em;text-decoration:none;transition:all .2s}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-outline{border:1px solid rgba(242,240,234,.22);color:var(--white);padding:.78rem 1.9rem;border-radius:100px;font-size:.76rem;font-weight:400;text-decoration:none;transition:all .2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-stats{display:flex;gap:2.2rem;margin-top:2.2rem;padding-top:2.2rem;border-top:1px solid var(--border)}
+.hstat-num{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);line-height:1}
+.hstat-lbl{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.15rem}
+/* quote card */
+.qcard{background:rgba(20,20,26,.92);border:1px solid var(--border);border-radius:var(--radius);padding:1.8rem;backdrop-filter:blur(20px)}
+.qcard h3{font-size:.95rem;font-weight:600;margin-bottom:.2rem}
+.qcard p{font-size:.7rem;color:var(--muted);margin-bottom:1.3rem}
+.qf-group{margin-bottom:.7rem}
+.qf-group input,.qf-group select{width:100%;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:8px;padding:.65rem .9rem;font-family:'Outfit',sans-serif;font-size:.78rem;color:var(--white);outline:none;transition:border-color .2s}
+.qf-group input::placeholder{color:var(--muted)}
+.qf-group input:focus,.qf-group select:focus{border-color:var(--gold)}
+.qf-group select option{background:#1a1a22;color:var(--white)}
+.qf-row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.btn-submit{width:100%;background:var(--gold);color:#000;border:none;border-radius:8px;padding:.82rem;font-family:'Outfit',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.05em;cursor:pointer;transition:background .2s;margin-top:.3rem}
+.btn-submit:hover{background:var(--gold2)}
+
+/* SECTIONS */
+.section{padding:5.5rem 3rem}.section-alt{background:var(--bg2)}
+.label{display:inline-flex;align-items:center;gap:.55rem;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+.label::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3.5rem);line-height:1;font-weight:700;margin-bottom:.9rem}
+.sec-title em{font-style:italic;color:var(--gold);font-weight:400}
+.sec-sub{font-size:.86rem;color:var(--muted);line-height:1.85;max-width:500px}
+.divider{width:38px;height:2px;background:var(--gold);margin:1rem 0}
+
+/* PILLARS */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border)}
+.pillar{padding:2.3rem 1.8rem;border-right:1px solid var(--border);transition:background .3s}
+.pillar:last-child{border-right:none}
+.pillar:hover{background:var(--dim)}
+.pillar-ico{font-size:1.5rem;margin-bottom:.9rem}
+.pillar-title{font-size:.95rem;font-weight:600;margin-bottom:.45rem}
+.pillar-body{font-size:.76rem;color:var(--muted);line-height:1.75}
+
+/* SERVICES */
+.services-head{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:end;margin-bottom:3rem}
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.pkg{background:var(--bg);padding:2.5rem 2.2rem;position:relative;transition:background .3s}
+.pkg:hover{background:var(--bg3)}
+.pkg.featured{background:var(--bg3);border-top:2px solid var(--gold)}
+.pkg-badge{display:inline-block;background:var(--gold);color:#000;font-size:.56rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.18rem .65rem;border-radius:4px;margin-bottom:1rem}
+.pkg-name{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;line-height:1;margin-bottom:.2rem}
+.pkg-tag{font-size:.7rem;color:var(--gold);font-style:italic;margin-bottom:1.3rem}
+.pkg-from{font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.pkg-price{font-family:'Playfair Display',serif;font-size:2.8rem;color:var(--gold);line-height:1;font-weight:700}
+.pkg-price-sub{font-size:.66rem;color:var(--muted);margin:.18rem 0 1.4rem}
+.pkg-list{list-style:none;margin-bottom:1.8rem}
+.pkg-list li{font-size:.76rem;padding:.46rem 0;border-bottom:1px solid var(--border);color:rgba(242,240,234,.78);display:flex;gap:.65rem;align-items:flex-start;line-height:1.4}
+.pkg-list li::before{content:'✦';color:var(--gold);font-size:.52rem;flex-shrink:0;margin-top:.26rem}
+.pkg-btn{display:block;text-align:center;border:1px solid rgba(201,168,76,.28);color:var(--gold);padding:.72rem;border-radius:8px;font-size:.68rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;transition:all .2s}
+.pkg-btn:hover,.featured .pkg-btn{background:var(--gold);color:#000;border-color:var(--gold)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.about-img-wrap{position:relative;overflow:hidden}
+.about-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .8s;filter:contrast(1.05) saturate(.9)}
+.about-img-wrap:hover img{transform:scale(1.04)}
+.about-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 80%,var(--bg2) 100%)}
+.about-body{background:var(--bg2);padding:4.5rem 4rem;display:flex;flex-direction:column;justify-content:center}
+.about-list{list-style:none;margin:1.6rem 0 2.2rem}
+.about-list li{display:flex;align-items:center;gap:.75rem;font-size:.82rem;padding:.38rem 0;color:rgba(242,240,234,.8)}
+.about-list li::before{content:'✦';color:var(--gold);font-size:.58rem;flex-shrink:0}
+.gerald-badge{display:flex;align-items:center;gap:1rem;margin-top:2.2rem;padding-top:1.8rem;border-top:1px solid var(--border)}
+.g-img{width:52px;height:52px;border-radius:50%;overflow:hidden;border:2px solid var(--gold);flex-shrink:0}
+.g-img img{width:100%;height:100%;object-fit:cover;object-position:top}
+.g-name{font-weight:600;font-size:.86rem}
+.g-role{font-size:.68rem;color:var(--gold);margin-top:.08rem}
+.g-years{font-size:.68rem;color:var(--muted);margin-top:.08rem}
+
+/* GALLERY */
+.gallery-head{text-align:center;margin-bottom:2.8rem}
+.gallery-head .divider{margin-inline:auto}
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:3px}
+.m-item{overflow:hidden;position:relative;cursor:pointer}
+.m-item.wide{grid-column:span 2}.m-item.tall{grid-row:span 2}
+.m-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s,filter .4s;filter:contrast(1.04) saturate(.88)}
+.m-item:hover img{transform:scale(1.07);filter:contrast(1.08) saturate(1)}
+.m-item::after{content:'';position:absolute;inset:0;background:rgba(201,168,76,0);transition:background .3s;pointer-events:none}
+.m-item:hover::after{background:rgba(201,168,76,.05)}
+
+/* REVIEWS */
+.reviews-head{text-align:center;margin-bottom:3rem}
+.reviews-head .divider{margin-inline:auto}
+.star-row{font-size:1.3rem;color:var(--gold);letter-spacing:.1em;margin:.45rem 0 .25rem}
+.rating-note{font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border)}
+.rev-card{background:var(--bg2);padding:2.3rem 2rem;transition:background .3s}
+.rev-card:hover{background:var(--bg3)}
+.rev-stars{color:var(--gold);font-size:.76rem;letter-spacing:.07em;margin-bottom:1rem}
+.rev-text{font-family:'Playfair Display',serif;font-style:italic;font-size:.97rem;line-height:1.7;color:rgba(242,240,234,.8);margin-bottom:1.3rem}
+.rev-open{color:var(--gold);font-size:1.3rem;vertical-align:-4px;margin-right:2px}
+.rev-name{font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.rev-when{font-size:.64rem;color:var(--muted);margin-top:.12rem}
+
+/* VIDEOS */
+.videos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.vid-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:var(--radius);background:var(--bg3)}
+.vid-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:var(--radius)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:1.8rem}
+.contact-item{display:flex;gap:1.1rem;align-items:flex-start}
+.c-ico{width:42px;height:42px;border-radius:10px;background:var(--dim);border:1px solid rgba(201,168,76,.18);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.c-label{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem}
+.c-val{font-size:.9rem;font-weight:500}
+.c-val a{color:var(--white);text-decoration:none;transition:color .2s}
+.c-val a:hover{color:var(--gold)}
+.cf-box{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:2.3rem}
+.cf-box h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:.25rem}
+.cf-box>p{font-size:.76rem;color:var(--muted);margin-bottom:1.6rem}
+.cf-group{margin-bottom:.9rem}
+.cf-group label{display:block;font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.cf-group input,.cf-group select,.cf-group textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;padding:.72rem .95rem;font-family:'Outfit',sans-serif;font-size:.8rem;color:var(--white);outline:none;transition:border-color .2s;resize:none}
+.cf-group input:focus,.cf-group select:focus,.cf-group textarea:focus{border-color:var(--gold)}
+.cf-group textarea{height:96px}
+.cf-group select option{background:#1a1a22}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+
+/* BLOG */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.blog-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .3s,border-color .3s}
+.blog-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.22)}
+.blog-img{height:190px;overflow:hidden}
+.blog-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.blog-card:hover .blog-img img{transform:scale(1.06)}
+.blog-body{padding:1.6rem}
+.blog-cat{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.blog-title{font-family:'Playfair Display',serif;font-size:1.1rem;line-height:1.3;margin-bottom:.6rem;font-weight:700}
+.blog-excerpt{font-size:.76rem;color:var(--muted);line-height:1.7}
+
+/* AREA */
+.area-strip{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.2rem 3rem;display:flex;align-items:center;gap:1.8rem;flex-wrap:wrap}
+.area-label{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.area-chips{display:flex;flex-wrap:wrap;gap:.45rem}
+.chip{border:1px solid rgba(201,168,76,.2);color:rgba(242,240,234,.65);padding:.32rem .9rem;border-radius:100px;font-size:.66rem;transition:all .2s}
+.chip:hover{background:var(--dim);color:var(--gold)}
+
+/* CTA BAND */
+.cta-band{background:var(--gold);padding:4rem 3rem;text-align:center}
+.cta-band .label{color:rgba(0,0,0,.4);justify-content:center}
+.cta-band .label::before{background:rgba(0,0,0,.28)}
+.cta-band h2{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4.5vw,3.8rem);color:#000;line-height:1;margin-bottom:.4rem}
+.big-phone{display:block;font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6vw,5.5rem);color:#000;text-decoration:none;line-height:1.05;margin:.4rem 0;transition:opacity .2s}
+.big-phone:hover{opacity:.65}
+.cta-note{font-size:.8rem;color:rgba(0,0,0,.5);margin-bottom:1.6rem}
+.btn-dark{background:#000;color:var(--gold);padding:.8rem 2.2rem;border-radius:100px;font-size:.76rem;font-weight:700;letter-spacing:.07em;text-decoration:none;display:inline-block;transition:opacity .2s}
+.btn-dark:hover{opacity:.8}
+
+/* FOOTER */
+footer{background:#060608;padding:3.5rem 3rem;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3.5rem;border-top:1px solid var(--border)}
+.f-logo{height:40px;margin-bottom:.9rem}
+footer p{font-size:.76rem;color:rgba(242,240,234,.33);line-height:1.8}
+footer h5{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+footer ul{list-style:none}
+footer ul li{margin-bottom:.45rem}
+footer ul a{color:rgba(242,240,234,.35);font-size:.76rem;text-decoration:none;transition:color .2s;cursor:pointer}
+footer ul a:hover{color:var(--gold)}
+.f-bar{background:#030305;text-align:center;padding:.85rem 3rem;font-size:.6rem;color:rgba(242,240,234,.16);letter-spacing:.07em;border-top:1px solid rgba(255,255,255,.02)}
+
+/* FADE */
+.fade{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.fade.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:.75rem 1.2rem;gap:.8rem}
+  .nav-pills{display:none}
+  .nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero-inner{grid-template-columns:1fr;padding:5rem 1.5rem 3rem}
+  .qcard{display:none}
+  .hero-stats{gap:1.4rem}
+  .pillars{grid-template-columns:1fr 1fr}
+  .pillar:nth-child(2){border-right:none}
+  .section{padding:4rem 1.5rem}
+  .services-head{grid-template-columns:1fr;gap:1.4rem}
+  .packages,.rev-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .about-img-wrap{height:280px}
+  .about-body{padding:3rem 1.5rem}
+  .mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
+  .m-item.wide{grid-column:span 1}.m-item.tall{grid-row:span 1}
+  .videos-grid,.blog-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  footer{grid-template-columns:1fr;gap:2rem;padding:3rem 1.5rem}
+  .area-strip,.cta-band{padding:2.5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="promo-bar">☀️ Summer Shine Special — $20 OFF Any Full Detail! &nbsp;Call <a href="tel:4342414892">434-241-4892</a></div>
+
+<nav>
+  <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,fit=crop,q=95/Y4LE1e8aWwFnMvjE/new-logo-Yanqkv4LLKTZrXom.png" alt="Superior Mobile Coatings" class="nav-logo">
+  <div class="nav-pills">
+    <button class="active" onclick="go('home',this)">Home</button>
+    <button onclick="go('about',this)">About Us</button>
+    <button onclick="go('services',this)">Services &amp; Pricing</button>
+    <button onclick="go('portfolio',this)">Portfolio</button>
+    <button onclick="go('videos',this)">Videos</button>
+    <button onclick="go('blog',this)">Blog</button>
+    <button onclick="go('contact',this)">Contact Us</button>
+  </div>
+  <a href="tel:4342414892" class="nav-cta">📞 434-241-4892</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-menu" id="mobile-menu">
+  <button onclick="goMob('home')">Home</button>
+  <button onclick="goMob('about')">About Us</button>
+  <button onclick="goMob('services')">Services &amp; Pricing</button>
+  <button onclick="goMob('portfolio')">Portfolio</button>
+  <button onclick="goMob('videos')">Videos</button>
+  <button onclick="goMob('blog')">Blog</button>
+  <button onclick="goMob('contact')">Contact Us</button>
+  <a href="tel:4342414892" class="mob-cta">📞 Call 434-241-4892</a>
+</div>
+
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge"><span>★ 5.0</span> Google Rated · Lynchburg, VA</div>
+        <h1 class="hero-title">Premium Mobile<br><em>Auto Detailing</em></h1>
+        <p class="hero-sub">Ceramic coatings, paint correction &amp; full detailing — delivered directly to your home or workplace. We bring our own water and electricity.</p>
+        <div class="hero-btns">
+          <a href="tel:4342414892" class="btn-primary">Book Now</a>
+          <a href="#" onclick="go('services',document.querySelectorAll('.nav-pills button')[2]);return false" class="btn-outline">View Packages</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="hstat-num">5.0</div><div class="hstat-lbl">Star Rating</div></div>
+          <div><div class="hstat-num">18+</div><div class="hstat-lbl">Reviews</div></div>
+          <div><div class="hstat-num">7+</div><div class="hstat-lbl">Yrs Experience</div></div>
+        </div>
+      </div>
+      <div class="qcard">
+        <h3>Get a Free Quote</h3>
+        <p>We'll get back to you same day</p>
+        <div class="qf-group"><input type="text" placeholder="Your Name"></div>
+        <div class="qf-row">
+          <div class="qf-group"><input type="tel" placeholder="Phone Number"></div>
+          <div class="qf-group"><input type="email" placeholder="Email Address"></div>
+        </div>
+        <div class="qf-group">
+          <select>
+            <option value="" disabled selected>Select a Service</option>
+            <option>Refresh &amp; Shine — Basic Detail</option>
+            <option>Showroom Sparkle — Premium Detail</option>
+            <option>Ultimate Elegance — Luxury Detail</option>
+            <option>Ceramic Coating</option>
+            <option>Paint Correction</option>
+            <option>Headlight Restoration</option>
+          </select>
+        </div>
+        <div class="qf-group"><input type="text" placeholder="Your City / Zip Code"></div>
+        <button class="btn-submit">Request a Free Quote →</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="pillars">
+    <div class="pillar fade"><div class="pillar-ico">🚗</div><div class="pillar-title">We Come to You</div><p class="pillar-body">Fully mobile — we bring our own water and electricity to your home or office.</p></div>
+    <div class="pillar fade d1"><div class="pillar-ico">💎</div><div class="pillar-title">Nano Diamond Coatings</div><p class="pillar-body">Advanced nanotechnology shields paint against UV, oxidation &amp; contaminants.</p></div>
+    <div class="pillar fade d2"><div class="pillar-ico">🌊</div><div class="pillar-title">Ceramic Coatings</div><p class="pillar-body">Hydrophobic barrier repels water, dirt &amp; grime for a mirror-like finish.</p></div>
+    <div class="pillar fade d3"><div class="pillar-ico">✨</div><div class="pillar-title">Paint Correction</div><p class="pillar-body">We eliminate swirl marks, scratches &amp; imperfections — restoring your paint's brilliance.</p></div>
+  </div>
+
+  <section class="section section-alt">
+    <div class="reviews-head fade">
+      <div class="label" style="justify-content:center">What Clients Say</div>
+      <h2 class="sec-title">5-Star Reviews</h2>
+      <div class="divider"></div>
+      <div class="star-row">★★★★★</div>
+      <p class="rating-note">5.0 Rating · 18 Google Reviews</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card fade"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Quality work and professional service at a reasonable price. Everything is explained 100% — you will know exactly what services you'll receive.</p><div class="rev-name">Scott Housman</div><div class="rev-when">1 month ago</div></div>
+      <div class="rev-card fade d1"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Gerald did a wonderful job on my 2017 Honda Pilot! Looks brand new. He even did extra things he didn't charge me for. I've got 4 kids and a pet — it's never looked this good!</p><div class="rev-name">Crystal (DreamZelda)</div><div class="rev-when">10 months ago</div></div>
+      <div class="rev-card fade d2"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Came out on very short notice and got our car looking amazing. I think it looks better than the day we bought it! Will definitely be calling again.</p><div class="rev-name">Lisa Dean</div><div class="rev-when">Local Guide · 1 year ago</div></div>
+      <div class="rev-card fade"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Super knowledgeable and dedicated. Went above and beyond at a reasonable price. Interior and exterior are at showroom quality again.</p><div class="rev-name">Jace Lowe</div><div class="rev-when">Local Guide · 1 year ago</div></div>
+      <div class="rev-card fade d1"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>He showed up early even though it was drizzling and still gave it his full effort. That alone showed me how serious he is about his work.</p><div class="rev-name">Reagan Wise</div><div class="rev-when">Verified Customer</div></div>
+      <div class="rev-card fade d2"><div class="rev-stars">★★★★★</div><p class="rev-text"><span class="rev-open">"</span>Phenomenal job!!! The best mobile detailing in the Lynchburg area. I will not use anyone else to detail my car.</p><div class="rev-name">Newland Isaac</div><div class="rev-when">2 weeks ago</div></div>
+    </div>
+  </section>
+
+  <div class="area-strip">
+    <span class="area-label">Service Area</span>
+    <div class="area-chips">
+      <span class="chip">Lynchburg</span><span class="chip">Madison Heights</span><span class="chip">Forest</span><span class="chip">Amherst</span><span class="chip">Monroe</span><span class="chip">&amp; Surrounding Areas</span>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <div class="label">Ready for a Transformation?</div>
+    <h2>Book Your Detail Today</h2>
+    <a href="tel:4342414892" class="big-phone">434-241-4892</a>
+    <p class="cta-note">Call or text anytime — we come to you, fully equipped.</p>
+    <a href="tel:4342414892" class="btn-dark">Schedule Your Detail</a>
+  </div>
+</div>
+
+
+<!-- ABOUT -->
+<div id="page-about" class="page">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1000,fit=crop/Y4LE1e8aWwFnMvjE/img_3405-Yan9N4LN3lsXaRZa.JPG" alt="SMC Crew">
+    </div>
+    <div class="about-body">
+      <div class="label">Our Story</div>
+      <h2 class="sec-title">Meet the <em>Crew</em></h2>
+      <div class="divider"></div>
+      <p style="font-size:.86rem;color:var(--muted);line-height:1.9">Your premier destination for exceptional mobile detailing — dedicated to providing the highest level of care and protection for your vehicle. Fully mobile, fully equipped, and passionate about every detail.</p>
+      <ul class="about-list">
+        <li>Fully mobile — we come to your door</li>
+        <li>Self-contained: our own water &amp; electricity</li>
+        <li>Nano Diamond &amp; Ceramic Coating specialists</li>
+        <li>Paint correction, shampooing &amp; more</li>
+        <li>Eco-friendly products &amp; water-saving techniques</li>
+        <li>5.0 stars across 18+ Google reviews</li>
+      </ul>
+      <a href="tel:4342414892" class="btn-primary" style="display:inline-block">Call Gerald — 434-241-4892</a>
+      <div class="gerald-badge">
+        <div class="g-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=297,h=238,fit=crop,trim=165.80678851174935;1688.5479452054794;979.0496083550914;0/Y4LE1e8aWwFnMvjE/img_1553-A0xNjO28ypHkk4Xr.JPG" alt="Gerald"></div>
+        <div>
+          <div class="g-name">Gerald</div>
+          <div class="g-role">Owner &amp; Founder</div>
+          <div class="g-years">7+ Years Experience · Car Enthusiast</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div style="text-align:center;margin-bottom:3rem">
+      <div class="label" style="justify-content:center">Our Mission</div>
+      <h2 class="sec-title">Why Choose <em>SMC?</em></h2>
+      <div class="divider" style="margin-inline:auto"></div>
+    </div>
+    <div class="pillars" style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden">
+      <div class="pillar"><div class="pillar-ico">🏆</div><div class="pillar-title">Unmatched Expertise</div><p class="pillar-body">Trained in the latest techniques, products, and equipment.</p></div>
+      <div class="pillar"><div class="pillar-ico">🏠</div><div class="pillar-title">Convenience First</div><p class="pillar-body">Fully-equipped mobile units — at your home or office.</p></div>
+      <div class="pillar"><div class="pillar-ico">🎯</div><div class="pillar-title">Customized Care</div><p class="pillar-body">Packages tailored to your vehicle's specific needs.</p></div>
+      <div class="pillar"><div class="pillar-ico">🌿</div><div class="pillar-title">Eco-Friendly</div><p class="pillar-body">Biodegradable products and water-saving techniques.</p></div>
+    </div>
+  </section>
+
+  <div class="cta-band">
+    <div class="label">Ready?</div>
+    <h2>Let Us Take Care of Your Vehicle</h2>
+    <a href="tel:4342414892" class="big-phone">434-241-4892</a>
+    <p class="cta-note">Call or text — we'll schedule at your convenience.</p>
+    <a href="tel:4342414892" class="btn-dark">Book an Appointment</a>
+  </div>
+</div>
+
+
+<!-- SERVICES -->
+<div id="page-services" class="page">
+  <section class="section">
+    <div class="services-head">
+      <div>
+        <div class="label">What We Offer</div>
+        <h2 class="sec-title">Services &amp; <em>Pricing</em></h2>
+        <div class="divider"></div>
+      </div>
+      <p class="sec-sub">All packages are performed on-site with professional-grade equipment and premium products. Prices are starting rates — contact us for an exact quote on your vehicle.</p>
+    </div>
+    <div class="packages">
+      <div class="pkg">
+        <div class="pkg-name">Refresh &amp; Shine</div>
+        <div class="pkg-tag">Basic Detailing Package</div>
+        <div class="pkg-from">Starting from</div>
+        <div class="pkg-price">$100</div>
+        <div class="pkg-price-sub">$160+ for large trucks, vans &amp; SUVs</div>
+        <ul class="pkg-list">
+          <li>Exterior Hand Wash &amp; Dry</li>
+          <li>Tire and Wheel Cleaning</li>
+          <li>Interior Vacuuming</li>
+          <li>Window Cleaning</li>
+          <li>Premium Wax Application</li>
+          <li>All Dash &amp; Door Panels Cleaned</li>
+        </ul>
+        <a href="tel:4342414892" class="pkg-btn">Book This Package</a>
+      </div>
+      <div class="pkg featured">
+        <div class="pkg-badge">Most Popular</div>
+        <div class="pkg-name">Showroom Sparkle</div>
+        <div class="pkg-tag">Premium Detailing Package</div>
+        <div class="pkg-from">Starting from</div>
+        <div class="pkg-price">$250</div>
+        <div class="pkg-price-sub">$350+ for large trucks, vans &amp; SUVs</div>
+        <ul class="pkg-list">
+          <li>Complete Hand Wash &amp; Dry</li>
+          <li>Clay Bar Paint Decontamination</li>
+          <li>Interior Vacuuming &amp; Steam Cleaning</li>
+          <li>Leather Conditioning</li>
+          <li>Engine Bay Detailing</li>
+          <li>Paint Sealant Application</li>
+          <li>Dash &amp; Door Panels — Shine Applied</li>
+        </ul>
+        <a href="tel:4342414892" class="pkg-btn">Book This Package</a>
+      </div>
+      <div class="pkg">
+        <div class="pkg-name">Ultimate Elegance</div>
+        <div class="pkg-tag">Luxury Detailing Package</div>
+        <div class="pkg-from">Starting from</div>
+        <div class="pkg-price">$500</div>
+        <div class="pkg-price-sub">$950+ for large trucks, vans &amp; SUVs</div>
+        <ul class="pkg-list">
+          <li>Exterior Hand Wash &amp; Dry</li>
+          <li>Tire, Wheel &amp; Wheel Well Recondition</li>
+          <li>Hard Water Spot Removal</li>
+          <li>Clay Bar Decontamination</li>
+          <li>Full Paint Correction</li>
+          <li>High-Intensity Ceramic Coating</li>
+          <li>Deep Interior Shampooing &amp; Stain Removal</li>
+          <li>Steam Cleaning &amp; Leather Restoration</li>
+          <li>Headlight Restoration</li>
+          <li>Complete Engine Bay Detailing</li>
+        </ul>
+        <a href="tel:4342414892" class="pkg-btn">Book This Package</a>
+      </div>
+    </div>
+  </section>
+  <div class="cta-band">
+    <div class="label">Not Sure Which Package?</div>
+    <h2>Give Us a Call</h2>
+    <a href="tel:4342414892" class="big-phone">434-241-4892</a>
+    <p class="cta-note">We'll recommend the right service for your vehicle.</p>
+    <a href="tel:4342414892" class="btn-dark">Call or Text Now</a>
+  </div>
+</div>
+
+
+<!-- PORTFOLIO -->
+<div id="page-portfolio" class="page">
+  <section class="section">
+    <div class="gallery-head fade">
+      <div class="label" style="justify-content:center">Our Work</div>
+      <h2 class="sec-title">Portfolio</h2>
+      <div class="divider"></div>
+      <p class="sec-sub" style="margin:0 auto;text-align:center">Check out our latest jobs. Follow us on social media for new results every week.</p>
+    </div>
+    <div class="mosaic" style="margin-top:2.5rem">
+      <div class="m-item wide tall"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1400,fit=crop/Y4LE1e8aWwFnMvjE/img_6131-A0xwN90y61F5DVgV.JPG" alt="Detail work"></div>
+      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_7233-AQEZzveJXGF9p09j.JPG" alt="Ceramic coating"></div>
+      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_1550-AVLJ1oZEZrcGyyKo.JPG" alt="Paint correction"></div>
+      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_4540-Yg2WpMywxPigVBXR.JPG" alt="Interior detail"></div>
+      <div class="m-item wide"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=crop/Y4LE1e8aWwFnMvjE/img_2709-YX4PDGNVJbh1QXRV.JPG" alt="Motorcycle detail"></div>
+      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_0585-YKbNyRVwRofqDEzd.JPG" alt="Auto detailing"></div>
+      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_0647-mjE5nJjv42Hyyq4v.JPG" alt="Before after"></div>
+      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_1690-mjEGq1prOZS3b6zo.JPG" alt="Result"></div>
+      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_7221-Aq2J8yGNJXf2De84.JPG" alt="Detail"></div>
+      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_0203-A85w9ZkLOWSBMJb1.JPG" alt="Detail"></div>
+      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_4327-AoPvEMR5DqT1EzV2.JPG" alt="Detail"></div>
+      <div class="m-item"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_0320-m6LwWO9jZkfKQywx.JPG" alt="Detail"></div>
+    </div>
+  </section>
+</div>
+
+
+<!-- VIDEOS -->
+<div id="page-videos" class="page">
+  <section class="section">
+    <div class="gallery-head fade">
+      <div class="label" style="justify-content:center">Watch Us Work</div>
+      <h2 class="sec-title">Our <em>Videos</em></h2>
+      <div class="divider"></div>
+      <p class="sec-sub" style="margin:0 auto;text-align:center">See our detailing work in action — real results, real customers.</p>
+    </div>
+    <div class="videos-grid" style="margin-top:2.5rem">
+      <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/tfbuaunUdwA" title="SMC Video 1" allowfullscreen></iframe></div>
+      <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/v7A9SJ5z7J0" title="SMC Video 2" allowfullscreen></iframe></div>
+      <div class="vid-wrap"><iframe src="https://www.youtube.com/embed/0IIuhG4NhHg" title="SMC Video 3" allowfullscreen></iframe></div>
+    </div>
+  </section>
+  <div class="cta-band">
+    <div class="label">Like What You See?</div>
+    <h2>Book Your Detail</h2>
+    <a href="tel:4342414892" class="big-phone">434-241-4892</a>
+    <p class="cta-note">Call or text to schedule — we come to you.</p>
+    <a href="tel:4342414892" class="btn-dark">Get Started</a>
+  </div>
+</div>
+
+
+<!-- BLOG -->
+<div id="page-blog" class="page">
+  <section class="section">
+    <div class="gallery-head fade">
+      <div class="label" style="justify-content:center">Tips &amp; News</div>
+      <h2 class="sec-title">Our <em>Blog</em></h2>
+      <div class="divider"></div>
+      <p class="sec-sub" style="margin:0 auto;text-align:center">Detailing tips, product guides, and updates from the SMC crew.</p>
+    </div>
+    <div class="blog-grid" style="margin-top:2.5rem">
+      <div class="blog-card">
+        <div class="blog-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_1550-AVLJ1oZEZrcGyyKo.JPG" alt="Ceramic Coating"></div>
+        <div class="blog-body"><div class="blog-cat">Ceramic Coatings</div><div class="blog-title">Why Ceramic Coatings Are Worth Every Penny</div><p class="blog-excerpt">Ceramic coatings offer long-term protection that wax simply can't match. Here's what you need to know before booking.</p></div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_7233-AQEZzveJXGF9p09j.JPG" alt="Paint Correction"></div>
+        <div class="blog-body"><div class="blog-cat">Paint Correction</div><div class="blog-title">What Is Paint Correction and Do You Need It?</div><p class="blog-excerpt">Swirl marks, scratches, water spots — paint correction removes them all. Find out if your vehicle is a candidate.</p></div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=800,fit=crop/Y4LE1e8aWwFnMvjE/img_4540-Yg2WpMywxPigVBXR.JPG" alt="Interior Detailing"></div>
+        <div class="blog-body"><div class="blog-cat">Interior Detailing</div><div class="blog-title">5 Signs Your Car Interior Needs a Deep Clean</div><p class="blog-excerpt">From pet hair to stubborn stains, here are the signs that it's time to call in the professionals.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <section class="section">
+    <div class="label">Get in Touch</div>
+    <h2 class="sec-title" style="margin-bottom:.5rem">Contact <em>Us</em></h2>
+    <div class="divider"></div>
+    <div class="contact-grid" style="margin-top:3rem">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item"><div class="c-ico">📞</div><div><div class="c-label">Phone / Text</div><div class="c-val"><a href="tel:4342414892">434-241-4892</a></div></div></div>
+          <div class="contact-item"><div class="c-ico">✉️</div><div><div class="c-label">Email</div><div class="c-val"><a href="mailto:superiormobilecoatings@gmail.com">superiormobilecoatings@gmail.com</a></div></div></div>
+          <div class="contact-item"><div class="c-ico">📍</div><div><div class="c-label">Address</div><div class="c-val">124 Longview Drive<br>Madison Heights, VA 24572</div></div></div>
+          <div class="contact-item"><div class="c-ico">🕐</div><div><div class="c-label">Hours</div><div class="c-val">Available by appointment<br><span style="font-size:.76rem;color:var(--muted)">Call or text to schedule</span></div></div></div>
+        </div>
+        <div style="margin-top:2.5rem;border-radius:var(--radius);overflow:hidden;height:240px">
+          <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1000,fit=crop/Y4LE1e8aWwFnMvjE/img_0565-dWx0ZqgEn8CrgLVX.JPG" alt="SMC" style="width:100%;height:100%;object-fit:cover">
+        </div>
+      </div>
+      <div class="cf-box">
+        <h3>Request a Quote</h3>
+        <p>Fill out the form and we'll get back to you same day.</p>
+        <div class="cf-row">
+          <div class="cf-group"><label>First Name</label><input type="text" placeholder="John"></div>
+          <div class="cf-group"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+        </div>
+        <div class="cf-group"><label>Phone Number</label><input type="tel" placeholder="434-000-0000"></div>
+        <div class="cf-group"><label>Email Address</label><input type="email" placeholder="you@email.com"></div>
+        <div class="cf-group"><label>Service Needed</label>
+          <select>
+            <option value="" disabled selected>Select a service</option>
+            <option>Refresh &amp; Shine — Basic Detail</option>
+            <option>Showroom Sparkle — Premium Detail</option>
+            <option>Ultimate Elegance — Luxury Detail</option>
+            <option>Ceramic Coating</option>
+            <option>Paint Correction</option>
+            <option>Headlight Restoration</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="cf-group"><label>Vehicle Year, Make &amp; Model</label><input type="text" placeholder="e.g. 2019 Ford F-150"></div>
+        <div class="cf-group"><label>Message (Optional)</label><textarea placeholder="Any additional details..."></textarea></div>
+        <button class="btn-submit">Send Message →</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=700,fit=crop,q=95/Y4LE1e8aWwFnMvjE/new-logo-Yanqkv4LLKTZrXom.png" alt="Superior Mobile Coatings" class="f-logo">
+    <p>Premium mobile auto detailing, ceramic coatings &amp; paint correction serving Lynchburg, VA and surrounding areas.</p>
+    <p style="margin-top:.75rem">📍 124 Longview Dr, Madison Heights, VA 24572</p>
+    <p style="margin-top:.3rem">📞 <a href="tel:4342414892" style="color:var(--gold);text-decoration:none">434-241-4892</a></p>
+    <p style="margin-top:.3rem">✉️ <a href="mailto:superiormobilecoatings@gmail.com" style="color:var(--gold);text-decoration:none">superiormobilecoatings@gmail.com</a></p>
+  </div>
+  <div>
+    <h5>Services</h5>
+    <ul>
+      <li><a onclick="go('services',document.querySelectorAll('.nav-pills button')[2])">Refresh &amp; Shine — Basic Detail</a></li>
+      <li><a onclick="go('services',document.querySelectorAll('.nav-pills button')[2])">Showroom Sparkle — Premium</a></li>
+      <li><a onclick="go('services',document.querySelectorAll('.nav-pills button')[2])">Ultimate Elegance — Luxury</a></li>
+      <li><a onclick="go('services',document.querySelectorAll('.nav-pills button')[2])">Ceramic Coatings</a></li>
+      <li><a onclick="go('services',document.querySelectorAll('.nav-pills button')[2])">Nano Diamond Coatings</a></li>
+      <li><a onclick="go('services',document.querySelectorAll('.nav-pills button')[2])">Paint Correction</a></li>
+      <li><a onclick="go('services',document.querySelectorAll('.nav-pills button')[2])">Headlight Restoration</a></li>
+    </ul>
+  </div>
+  <div>
+    <h5>Company</h5>
+    <ul>
+      <li><a onclick="go('home',document.querySelectorAll('.nav-pills button')[0])">Home</a></li>
+      <li><a onclick="go('about',document.querySelectorAll('.nav-pills button')[1])">About Us</a></li>
+      <li><a onclick="go('portfolio',document.querySelectorAll('.nav-pills button')[3])">Portfolio</a></li>
+      <li><a onclick="go('videos',document.querySelectorAll('.nav-pills button')[4])">Videos</a></li>
+      <li><a onclick="go('blog',document.querySelectorAll('.nav-pills button')[5])">Blog</a></li>
+      <li><a onclick="go('contact',document.querySelectorAll('.nav-pills button')[6])">Contact Us</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="f-bar">© 2025 Superior Mobile Coatings &nbsp;·&nbsp; All Rights Reserved &nbsp;·&nbsp; Madison Heights, VA</div>
+
+<script>
+function go(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('.nav-pills button').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  setTimeout(initFades, 80);
+}
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function goMob(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('.mobile-menu button').forEach(b => b.classList.remove('active'));
+  document.getElementById('mobile-menu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  setTimeout(initFades, 80);
+}
+function initFades() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }});
+  }, {threshold: 0.1});
+  document.querySelectorAll('.fade:not(.in)').forEach(el => io.observe(el));
+}
+initFades();
+</script>
+</body>
+</html>
